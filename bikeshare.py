@@ -12,7 +12,7 @@ def get_filters():
     print('You can currently explore 3 cities: Chicago, New York City and Washington!')
    
     while True:
-            # Ask user for input and validates the user input. 
+            # Request user input and validate it  
             city = input('\nPlease type your preferred city.\n').lower()
             city_user_input = ['chicago' ,'new york city', 'washington']
 
@@ -24,21 +24,23 @@ def get_filters():
                 break
 
     while True:
-             # Ask user for input and validates the user input.  
+             # Request user input and validate it  
             month = input('\nWhich month would you like to filter the data?. (january, february, ....., june.). Type "all" to select all months.\n').lower()
             month_user_input = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
-
+            
+            # Spell Check/Error Handling
             if month not in month_user_input:
                 print('Oops! Please check your spelling.')
-                continue
+                continuegit 
             else:
                 break
 
     while True:
-             # Ask user for input and validates the user input.  
+             # Request user input and validate it  
             day_user_input = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']
             day = input('\nWhich day would you like to filter the data?. (eg. sunday). Type "all" to filter by week.\n').lower()
-
+            
+            # Spell Check/Error Handling
             if day not in day_user_input:
                 print('Oops! Please check your spelling.')
                 continue

@@ -16,7 +16,7 @@ def get_filters():
             city = input('\nPlease type your preferred city.\n').lower()
             city_user_input = ['chicago' ,'new york city', 'washington']
 
-            # Spell Check/Error Handling
+            # Spell Check/Error Handling 
             if city not in city_user_input:
                 print('Oops! Please check your spelling.')
                 continue

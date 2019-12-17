@@ -8,13 +8,12 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 def get_filters():
 
-    print('\nHello! Let\'s explore some US bikeshare data!\n')
-    print('You can currently explore 3 cities: Chicago, New York City and Washington!')
-   
+    print('\nHello! Let\'s explore some US bikeshare data!\nYou can explore Chicago, New York City and Washingon')
+    
     while True:
             # Ask user for input and validates the user input. 
             city = input('\nPlease type your preferred city.\n').lower()
-            validate_city = ['chicago' ,'new york city', 'washington']
+            validate_city = ['chicago', 'new york city', 'washington']
 
             if city not in validate_city:
                 print('Oops! Please check your spelling.')
@@ -50,6 +49,7 @@ def get_filters():
 
 
 def load_data(city, month, day):
+    
     # load the files into a dataframe
     df = pd.read_csv(CITY_DATA[city])
 
@@ -107,15 +107,15 @@ def station_stats(df):
 
     # Calculates the most frequently used start station
     freq_start_station = df['Start Station'].mode()[0]
-    print('Most commonly used end station: ',freq_start_station)
+    print('The most commonly used start station: ',freq_start_station)
 
     # Calculates the most frequently used end station
     freq_end_station = df['End Station'].mode()[0]
-    print('Most commonly used end station: ',freq_end_station)
+    print('The most commonly used end station: ',freq_end_station)
 
     # Calculates the most frequent combination of start station and end station trip
     freq_comb_SE = df.groupby(['Start Station', 'End Station']).size().idxmax()
-    print('Most frequent combination of Start and End Station: ', freq_comb_SE)
+    print('The most frequent combination of Start and End Station: ', freq_comb_SE)
     
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -133,7 +133,7 @@ def trip_duration_stats(df):
 
    # Calculates the the total trip duration based on filter
     mean_tt = df['Trip Duration'].mean()
-    print('Mean travel time', mean_tt)
+    print('Average travel time', mean_tt)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -147,7 +147,7 @@ def user_stats(df):
 
     # Counts the type of users per the filter
     user_types = df['User Type'].value_counts()
-    print(user_types)
+    print('User Type\n',user_types)
 
     # Counts the Gender per the filter
     print(' ')
@@ -155,8 +155,7 @@ def user_stats(df):
         try:
             gender = df['Gender'].value_counts()
         except KeyError:
-            print('Gender')
-            print('Sorry!. There is no available information.')
+            print('Gender\nSorry!. There is no information available.')
         else:
             print(gender)
         break
@@ -167,10 +166,9 @@ def user_stats(df):
         try:
             earliest_min = int(df['Birth Year'].min())
         except KeyError:
-            print('Birth Year')
-            print('Sorry!. There is no available information.')
+            print('Birth Year\nSorry!. There is no information available.')
         else:
-            print('Earliest Birth Year', earliest_min)
+            print('Earliest Birth Year: ', earliest_min)
         break
 
     # filter the last birth year
@@ -180,7 +178,7 @@ def user_stats(df):
         except KeyError:
             print('')
         else:
-            print('Most recent Birth year', earliest_max)
+            print('Most recent Birth year: ', earliest_max)
         break
 
     # filter the most common birth year
@@ -190,7 +188,7 @@ def user_stats(df):
         except KeyError:
             print('')
         else:
-            print('Most common year of birth', cmon_yob)
+            print('Most common Birth Year: ', cmon_yob)
         break
 
     print("\nThis took %s seconds." % (time.time() - start_time))
